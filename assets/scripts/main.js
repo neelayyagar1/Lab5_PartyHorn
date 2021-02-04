@@ -20,7 +20,7 @@ airHornField.oninput = function() {
 
 carHornField.oninput = function() {
     if(carHornField.checked == true){
-        changeImage.src = "./assets/media/images/car-horn.svg";
+        changeImage.src = "./assets/media/images/car.svg";
         changeSound.src = "./assets/media/audio/car-horn.mp3";
     }
 }
