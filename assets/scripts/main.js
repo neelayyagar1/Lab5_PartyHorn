@@ -1,6 +1,7 @@
 // main.js
 
 // TODO
+//created variables for each ID needed
 var number = document.getElementById("volume-number");
 var slider = document.getElementById("volume-slider");
 var changeImg = document.getElementById("volume-image");
@@ -11,6 +12,7 @@ var carHornField = document.getElementById("radio-car-horn");
 var partyHornField = document.getElementById("radio-party-horn");
 var buttonAction = document.getElementById("honk-btn");
 
+//changes Image and Sound to air horn if checked
 airHornField.oninput = function() {
     if(airHornField.checked == true){
         changeImage.src = "./assets/media/images/air-horn.svg";
@@ -18,6 +20,7 @@ airHornField.oninput = function() {
     }
 }
 
+//changes Image and Sound to car horn if checked
 carHornField.oninput = function() {
     if(carHornField.checked == true){
         changeImage.src = "./assets/media/images/car.svg";
@@ -25,6 +28,7 @@ carHornField.oninput = function() {
     }
 }
 
+//changes Image and Sound to party horn if checked
 partyHornField.oninput = function() {
     if(partyHornField.checked == true){
         changeImage.src = "./assets/media/images/party-horn.svg";
@@ -32,7 +36,7 @@ partyHornField.oninput = function() {
     }
 }
 
-
+//both these are needed to change number/slider correctly, enable/disable buttons, change volume image
 number.oninput = function() {
     slider.value = this.value;
     if (number.value >= 67 && number.value <= 100){
@@ -71,4 +75,14 @@ slider.oninput = function() {
         changeImg.src = "./assets/media/icons/volume-level-0.svg"; 
         buttonAction.disabled = true;
     }
+}
+
+//plays the appropriate sound and volume of the sound when button pressed
+buttonAction.addEventListener("click", playSound);
+function playSound(event){
+    event.preventDefault();
+    let hornSound = document.getElementById("horn-sound");
+    let soundVolume = document.getElementById("volume-slider");
+    hornSound.volume = soundVolume.value/100;
+    hornSound.play();
 }
